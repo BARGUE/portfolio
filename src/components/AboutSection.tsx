@@ -41,7 +41,7 @@ const timeline = [
 
 export const AboutSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "0px 0px -10% 0px" });
 
   return (
     <section id="about" className="py-24 md:py-32 relative overflow-hidden">

@@ -17,7 +17,7 @@ export const ProjectsSection = () => {
   const [selectedTag, setSelectedTag] = useState("Tous");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "0px 0px -10% 0px" });
 
   const filteredProjects =
     selectedTag === "Tous"
