@@ -15,6 +15,8 @@ export interface Project {
     stack: string[];
     liveUrl?: string;
     repoUrl?: string;
+    repoFrontUrl?: string;
+    repoBackUrl?: string;
 }
 
 export const projects: Project[] = [
@@ -39,6 +41,9 @@ export const projects: Project[] = [
             "Architecture front / API découplée et réutilisable",
         ],
         stack: ["Next.js", "TypeScript", "Tailwind CSS", "Node.js", "API REST"],
+        liveUrl: "https://example.com",
+        repoFrontUrl: "https://github.com/BARGUE/cv-builder",
+        repoBackUrl: "https://github.com/BARGUE/api-cv-builder",
     },
     {
         id: 2,
@@ -61,6 +66,9 @@ export const projects: Project[] = [
             "Interface responsive et animée",
         ],
         stack: ["React", "TypeScript", "Tailwind CSS", "Node.js", "API REST"],
+        liveUrl: "https://pokedex-three-fawn-73.vercel.app",
+        repoFrontUrl: "https://github.com/BARGUE/pokedex",
+        repoBackUrl: "https://github.com/BARGUE/api-pokedex",
     },
     {
         id: 3,
@@ -82,6 +90,8 @@ export const projects: Project[] = [
             "Navigation fluide et responsive",
         ],
         stack: ["Next.js", "TypeScript", "Tailwind CSS", "API REST"],
+        liveUrl: "https://netflix-git-main-maylkirian-7523s-projects.vercel.app",
+        repoUrl: "https://github.com/BARGUE/netflix",
     },
     {
         id: 4,
@@ -103,6 +113,7 @@ export const projects: Project[] = [
             "Gestion et suivi de la collection",
         ],
         stack: ["React Native", "TypeScript", "API REST"],
+        repoUrl: "https://github.com/BARGUE/poke-scan-mobile",
     },
 ];
 
