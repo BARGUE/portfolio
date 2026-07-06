@@ -30,7 +30,7 @@ export const ProjectsSection = () => {
   return (
     <section id="projects" className="py-24 md:py-32 relative">
       <div className="container mx-auto px-6">
-        <div className="reveal-up text-center mb-12">
+        <div className="text-center mb-12">
           <span className="text-sm font-semibold text-primary uppercase tracking-wider mb-4 block">
             Portfolio
           </span>
@@ -43,7 +43,7 @@ export const ProjectsSection = () => {
           </p>
         </div>
 
-        <div className="reveal-up animation-delay-200 flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
           {allTags.map((tag) => (
             <button
               key={tag}
@@ -60,13 +60,12 @@ export const ProjectsSection = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.map((project) => (
             <div
               key={project.id}
-              style={{ animationDelay: `${index * 0.1}s` }}
               onClick={() => setSelectedProject(project)}
               onMouseLeave={() => setGitMenuId(null)}
-              className="reveal-scale group cursor-pointer"
+              className="group cursor-pointer"
             >
                 <div className="glass-card overflow-hidden card-hover">
                   <div className="relative aspect-[16/10] overflow-hidden transform-gpu">

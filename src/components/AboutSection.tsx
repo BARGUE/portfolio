@@ -48,7 +48,7 @@ export const AboutSection = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <div className="reveal-up text-center mb-16">
+        <div className="text-center mb-16">
           <span className="text-sm font-semibold text-primary uppercase tracking-wider mb-4 block">
             À propos
           </span>
@@ -66,11 +66,10 @@ export const AboutSection = () => {
 
         {/* Highlights Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-          {highlights.map((item, index) => (
+          {highlights.map((item) => (
             <div
               key={item.title}
-              style={{ animationDelay: `${index * 0.1}s` }}
-              className="reveal-up glass-card p-6 card-hover group"
+              className="glass-card p-6 card-hover group"
             >
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                 <item.icon className="w-6 h-6 text-primary" />
@@ -84,7 +83,7 @@ export const AboutSection = () => {
         </div>
 
         {/* Timeline */}
-        <div className="reveal-up animation-delay-400 max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <h3 className="text-xl font-semibold mb-8 text-center">Parcours</h3>
           <div className="relative">
             {/* Timeline Line */}
@@ -94,8 +93,7 @@ export const AboutSection = () => {
               {timeline.map((item, index) => (
                 <div
                   key={item.year}
-                  style={{ animationDelay: `${0.5 + index * 0.1}s` }}
-                  className={`reveal-up relative flex items-center gap-6 ${
+                  className={`relative flex items-center gap-6 ${
                     index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                   }`}
                 >

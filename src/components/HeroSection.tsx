@@ -54,7 +54,7 @@ export const HeroSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <h1
-            className="reveal-up animation-delay-200 text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-balance"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-balance"
           >
             Je conçois des{" "}
             <span className="gradient-text">expériences digitales</span>{" "}
@@ -62,7 +62,7 @@ export const HeroSection = () => {
           </h1>
 
           <p
-            className="reveal-up animation-delay-400 text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto text-balance"
+            className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto text-balance"
           >
             Développeur Front-End (5+ ans), expert React et Next.js. Je conçois
             des interfaces performantes, accessibles et maintenables, au service
@@ -70,7 +70,7 @@ export const HeroSection = () => {
           </p>
 
           <div
-            className="reveal-up animation-delay-600 flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Button
               onClick={() => scrollToProjects("#projects")}
