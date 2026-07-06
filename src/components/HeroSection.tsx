@@ -53,33 +53,24 @@ export const HeroSection = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-balance"
+          <h1
+            className="reveal-up animation-delay-200 text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-balance"
           >
             Je conçois des{" "}
             <span className="gradient-text">expériences digitales</span>{" "}
             modernes.
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto text-balance"
+          <p
+            className="reveal-up animation-delay-400 text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto text-balance"
           >
             Développeur Front-End (5+ ans), expert React et Next.js. Je conçois
             des interfaces performantes, accessibles et maintenables, au service
             de l&apos;expérience utilisateur et des enjeux business.
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          <div
+            className="reveal-up animation-delay-600 flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Button
               onClick={() => scrollToProjects("#projects")}
@@ -99,7 +90,7 @@ export const HeroSection = () => {
               <Download className="mr-2 h-4 w-4" />
               Télécharger mon CV
             </Button>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

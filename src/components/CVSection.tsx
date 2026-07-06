@@ -1,17 +1,13 @@
 "use client";
 
-import { useRef } from "react";
 import { useRouter } from "next/navigation";
-import { motion, useInView } from "framer-motion";
 import { Download, Eye, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const CV_PDF = "/images/cv/CV.pdf";
 
 export const CVSection = () => {
-  const ref = useRef(null);
   const router = useRouter();
-  const isInView = useInView(ref, { once: true, margin: "0px 0px -10% 0px" });
 
   const handleDownload = () => {
     const link = document.createElement("a");
@@ -26,32 +22,20 @@ export const CVSection = () => {
 
   return (
     <section id="cv" className="py-24 md:py-32 relative">
-      <div className="container mx-auto px-6" ref={ref}>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto"
-        >
+      <div className="container mx-auto px-6">
+        <div className="reveal-up max-w-3xl mx-auto">
           <div className="glass-card p-8 md:p-12 text-center relative overflow-hidden">
             <div className="absolute inset-0 mesh-background opacity-50" />
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
 
             <div className="relative z-10">
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={isInView ? { scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.2, type: "spring" }}
-                className="w-20 h-20 mx-auto mb-8 rounded-2xl bg-primary/10 flex items-center justify-center"
+              <div
+                className="reveal-scale animation-delay-200 w-20 h-20 mx-auto mb-8 rounded-2xl bg-primary/10 flex items-center justify-center"
               >
                 <FileText className="w-10 h-10 text-primary" />
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
+              <div className="reveal-up animation-delay-400">
                 <span className="text-sm font-semibold text-primary uppercase tracking-wider mb-4 block">
                   Curriculum Vitae
                 </span>
@@ -92,10 +76,10 @@ export const CVSection = () => {
                     Voir le CV
                   </Button>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

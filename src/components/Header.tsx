@@ -25,52 +25,45 @@ export const Header = () => {
 
   return (
     <>
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      <nav
+        className={`reveal-down fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled ? "glass-nav" : "bg-transparent"
         }`}
       >
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <motion.a
+            <a
               href="#hero"
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection("#hero");
               }}
-              className="text-xl font-bold tracking-tight"
-              whileHover={{ scale: 1.02 }}
+              className="text-xl font-bold tracking-tight transition-transform hover:scale-[1.02]"
             >
               <span className="gradient-text">Portfolio</span>
-            </motion.a>
+            </a>
 
             <div className="hidden md:flex items-center gap-1">
               {navItems.map((item) => (
-                <motion.button
+                <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
-                  className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-secondary"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-all rounded-full hover:bg-secondary hover:scale-[1.02] active:scale-[0.98]"
                 >
                   {item.label}
-                </motion.button>
+                </button>
               ))}
             </div>
 
-            <motion.button
-              className="md:hidden p-2 rounded-full hover:bg-secondary transition-colors"
+            <button
+              className="md:hidden p-2 rounded-full hover:bg-secondary transition-transform active:scale-95"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              whileTap={{ scale: 0.95 }}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </motion.button>
+            </button>
           </div>
         </div>
-      </motion.nav>
+      </nav>
 
       <AnimatePresence>
         {isMobileMenuOpen && (

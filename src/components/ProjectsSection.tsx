@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ExternalLink,
   Github,
@@ -21,8 +21,6 @@ export const ProjectsSection = () => {
   const [selectedTag, setSelectedTag] = useState("Tous");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [gitMenuId, setGitMenuId] = useState<number | null>(null);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "0px 0px -10% 0px" });
 
   const filteredProjects =
     selectedTag === "Tous"
@@ -31,13 +29,8 @@ export const ProjectsSection = () => {
 
   return (
     <section id="projects" className="py-24 md:py-32 relative">
-      <div className="container mx-auto px-6" ref={ref}>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
+      <div className="container mx-auto px-6">
+        <div className="reveal-up text-center mb-12">
           <span className="text-sm font-semibold text-primary uppercase tracking-wider mb-4 block">
             Portfolio
           </span>
@@ -48,14 +41,9 @@ export const ProjectsSection = () => {
             Une sélection de mes réalisations récentes en design et
             développement.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
-        >
+        <div className="reveal-up animation-delay-200 flex flex-wrap justify-center gap-3 mb-12">
           {allTags.map((tag) => (
             <button
               key={tag}
@@ -69,22 +57,17 @@ export const ProjectsSection = () => {
               {tag}
             </button>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.div layout className="grid md:grid-cols-2 gap-6">
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                onClick={() => setSelectedProject(project)}
-                onMouseLeave={() => setGitMenuId(null)}
-                className="group cursor-pointer"
-              >
+        <div className="grid md:grid-cols-2 gap-6">
+          {filteredProjects.map((project, index) => (
+            <div
+              key={project.id}
+              style={{ animationDelay: `${index * 0.1}s` }}
+              onClick={() => setSelectedProject(project)}
+              onMouseLeave={() => setGitMenuId(null)}
+              className="reveal-scale group cursor-pointer"
+            >
                 <div className="glass-card overflow-hidden card-hover">
                   <div className="relative aspect-[16/10] overflow-hidden transform-gpu">
                     <div
@@ -235,10 +218,9 @@ export const ProjectsSection = () => {
                     </div>
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Project Modal */}
@@ -347,9 +329,9 @@ export const ProjectsSection = () => {
                 </div>
 
                 {/* Links */}
-                <div className="flex gap-4 mt-8 pt-6 border-t border-border">
+                <div className="flex flex-col gap-3 mt-8 pt-6 border-t border-border">
                   {selectedProject.liveUrl && (
-                    <Button asChild>
+                    <Button className="w-full justify-center" asChild>
                       <a
                         href={selectedProject.liveUrl}
                         target="_blank"
@@ -361,7 +343,7 @@ export const ProjectsSection = () => {
                     </Button>
                   )}
                   {selectedProject.repoFrontUrl && (
-                    <Button variant="outline" asChild>
+                    <Button variant="outline" className="w-full justify-center" asChild>
                       <a
                         href={selectedProject.repoFrontUrl}
                         target="_blank"
@@ -373,7 +355,7 @@ export const ProjectsSection = () => {
                     </Button>
                   )}
                   {selectedProject.repoBackUrl && (
-                    <Button variant="outline" asChild>
+                    <Button variant="outline" className="w-full justify-center" asChild>
                       <a
                         href={selectedProject.repoBackUrl}
                         target="_blank"
@@ -385,7 +367,7 @@ export const ProjectsSection = () => {
                     </Button>
                   )}
                   {selectedProject.repoUrl && (
-                    <Button variant="outline" asChild>
+                    <Button variant="outline" className="w-full justify-center" asChild>
                       <a
                         href={selectedProject.repoUrl}
                         target="_blank"
