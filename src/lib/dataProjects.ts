@@ -41,7 +41,6 @@ export const projects: Project[] = [
             "Architecture front / API découplée et réutilisable",
         ],
         stack: ["Next.js", "TypeScript", "Tailwind CSS", "Node.js", "API REST"],
-        liveUrl: "https://example.com",
         repoFrontUrl: "https://github.com/BARGUE/cv-builder",
         repoBackUrl: "https://github.com/BARGUE/api-cv-builder",
     },
