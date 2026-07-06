@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio — Maylvin Bargue
 
-## Getting Started
+Portfolio personnel de **Maylvin Bargue**, développeur Front-End (5+ ans), expert React et Next.js. Le site présente mon parcours, mes compétences, une sélection de projets et mon CV, dans une interface moderne, animée et responsive.
 
-First, run the development server:
+🔗 [linkedin.com/in/maylvin-bargue](https://linkedin.com/in/maylvin-bargue) · ✉️ maylkirian@gmail.com
+
+## ✨ Fonctionnalités
+
+- **Hero animé** avec dégradés en mouvement (Framer Motion)
+- **Section À propos** — parcours, expériences et approche produit
+- **Projets** — cartes détaillées avec contexte, solution, résultats et stack
+- **Compétences** — Front-End, Mobile & Back-end, Outils & IA
+- **CV** consultable en ligne et téléchargeable
+- **Design responsive**, thème sombre et composants accessibles (Radix UI)
+
+## 🛠️ Stack technique
+
+| Domaine        | Technologies                                      |
+| -------------- | ------------------------------------------------- |
+| Framework      | [Next.js 16](https://nextjs.org) (App Router)     |
+| Langage        | TypeScript                                        |
+| UI             | React 19, Tailwind CSS 4, Radix UI, shadcn/ui     |
+| Animations     | Framer Motion                                     |
+| Icônes         | Lucide React                                      |
+| Data / State   | TanStack Query, React Hook Form                   |
+
+## 🚀 Démarrage
+
+Prérequis : [Node.js](https://nodejs.org) 18+ et npm.
 
 ```bash
+# Installer les dépendances
+npm install
+
+# Lancer le serveur de développement
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrir [http://localhost:3000](http://localhost:3000) dans le navigateur.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📜 Scripts disponibles
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Commande        | Description                                    |
+| --------------- | ---------------------------------------------- |
+| `npm run dev`   | Démarre le serveur de développement            |
+| `npm run build` | Génère la version de production                |
+| `npm run start` | Lance la version de production                 |
+| `npm run lint`  | Analyse le code avec ESLint                    |
 
-## Learn More
+## 📁 Structure du projet
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/              # Routes (App Router) : page d'accueil, /cv, layout
+├── components/       # Sections (Hero, About, Projects, Skills, CV, Footer)
+│   └── ui/           # Composants réutilisables (shadcn/ui)
+├── hooks/            # Hooks personnalisés
+├── lib/              # Données (projets, compétences) et utilitaires
+└── providers/        # Providers globaux (thème, React Query)
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📦 Déploiement
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Le projet est optimisé pour un déploiement sur [Vercel](https://vercel.com/new). Il suffit d'importer le dépôt et de lancer le build — aucune configuration supplémentaire n'est requise.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+© 2026 Maylvin Bargue — Tous droits réservés.

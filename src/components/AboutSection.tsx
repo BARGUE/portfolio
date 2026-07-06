@@ -7,35 +7,42 @@ import { Zap, Palette, Code, Lightbulb } from "lucide-react";
 
 const highlights = [
   {
-    icon: Palette,
-    title: "Design UI/UX",
-    description: "Interfaces intuitives et visuellement impactantes",
+    icon: Code,
+    title: "Développement Front-End",
+    description: "React, Next.js & TypeScript, code propre et maintenable",
   },
   {
-    icon: Code,
-    title: "Développement Frontend",
-    description: "Code propre, performant et maintenable",
+    icon: Palette,
+    title: "Intégration & UI",
+    description: "Composants réutilisables fidèles au design system (Figma)",
   },
   {
     icon: Lightbulb,
     title: "Approche Product",
-    description: "Focus utilisateur et résolution de problèmes",
+    description: "Collaboration produit, design & back-end orientée utilisateur",
   },
   {
     icon: Zap,
-    title: "Efficacité",
-    description: "Livraison rapide sans compromis sur la qualité",
+    title: "Performance",
+    description: "Optimisation continue sur des plateformes à forte audience",
   },
 ];
 
 const timeline = [
-  { year: "2024", title: "Lead Designer / Dev", company: "Projets Freelance" },
-  { year: "2023", title: "UI/UX Designer", company: "Startup Tech" },
-  { year: "2022", title: "Frontend Developer", company: "Agence Digitale" },
   {
-    year: "2021",
-    title: "Début de carrière",
-    company: "Formation & Side projects",
+    year: "2020 – 2026",
+    title: "Développeur Front-End",
+    company: "Clig Digital · Paris",
+  },
+  {
+    year: "2020 – 2023",
+    title: "Master 2 Ingénierie Sciences Numériques",
+    company: "ETNA · Paris-Ivry",
+  },
+  {
+    year: "2012 – 2017",
+    title: "Militaire",
+    company: "Ministère de la Défense · Mâcon",
   },
 ];
 
@@ -59,13 +66,14 @@ export const AboutSection = () => {
             À propos
           </span>
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Créateur d&apos;expériences{" "}
-            <span className="gradient-text">mémorables</span>
+            Développeur front-end{" "}
+            <span className="gradient-text">passionné</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Je combine design et développement pour créer des produits digitaux
-            qui font la différence. Mon objectif : transformer des idées en
-            expériences utilisateur exceptionnelles.
+            Plus de 5 ans à concevoir des applications web performantes en React
+            et Next.js. Mon objectif : transformer des maquettes en interfaces
+            accessibles et maintenables, au service de l&apos;expérience
+            utilisateur et des enjeux business.
           </p>
         </motion.div>
 

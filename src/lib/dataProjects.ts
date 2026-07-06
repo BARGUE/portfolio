@@ -1,4 +1,4 @@
-import { Figma, Palette, Smartphone, Layers, Wand2, Code2, Database, Globe } from "lucide-react";
+import { Figma, Palette, Smartphone, Layers, Wand2, Code2, Database, Globe, Github } from "lucide-react";
 
 export interface Project {
     id: number;
@@ -7,7 +7,7 @@ export interface Project {
     tags: string[];
     role: string;
     year: string;
-    image: string;
+    image?: string;
     color: string;
     context: string;
     solution: string;
@@ -20,128 +20,120 @@ export interface Project {
 export const projects: Project[] = [
     {
         id: 1,
-        title: "Fintech Dashboard",
+        title: "Générateur de CV",
         description:
-            "Interface de gestion financière moderne avec visualisation de données en temps réel.",
-        tags: ["UI/UX", "Web", "Dashboard"],
-        role: "Lead Designer & Frontend Dev",
-        year: "2024",
+            "Application web de création et d'export de CV personnalisables, adossée à une API dédiée.",
+        tags: ["Web", "Full-Stack", "SaaS"],
+        role: "Développeur Front-End & API",
+        year: "2025",
         image:
-            "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+            "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=600&fit=crop",
         color: "from-cyan-500/20 to-blue-500/20",
         context:
-            "Une startup fintech avait besoin d'une interface intuitive pour permettre à ses utilisateurs de gérer leurs investissements.",
+            "Permettre à chacun de créer un CV professionnel et de l'exporter en PDF sans effort de mise en page.",
         solution:
-            "Design d'un dashboard modulaire avec des widgets personnalisables, graphiques interactifs et notifications en temps réel.",
+            "Un éditeur web avec templates modulaires et prévisualisation en temps réel, connecté à une API REST gérant les données et la génération des documents.",
         results: [
-            "+45% d'engagement utilisateur",
-            "-30% de temps pour effectuer des actions clés",
-            "NPS de 72",
+            "Édition en temps réel avec prévisualisation instantanée",
+            "Export PDF fidèle au rendu à l'écran",
+            "Architecture front / API découplée et réutilisable",
         ],
-        stack: ["React", "TypeScript", "TailwindCSS", "Recharts", "Framer Motion"],
-        liveUrl: "https://example.com",
-        repoUrl: "https://github.com",
+        stack: ["Next.js", "TypeScript", "Tailwind CSS", "Node.js", "API REST"],
     },
     {
         id: 2,
-        title: "E-commerce Luxe",
+        title: "Pokédex Web",
         description:
-            "Boutique en ligne haut de gamme avec une expérience d'achat immersive.",
-        tags: ["E-commerce", "Branding", "Mobile"],
-        role: "UI/UX Designer",
-        year: "2024",
+            "Site web d'exploration du Pokédex, alimenté par une API maison servant les données des Pokémon.",
+        tags: ["Web", "API REST", "React"],
+        role: "Développeur Front-End & API",
+        year: "2025",
         image:
-            "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop",
-        color: "from-purple-500/20 to-pink-500/20",
+            "https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?w=800&h=600&fit=crop",
+        color: "from-red-500/20 to-yellow-500/20",
         context:
-            "Une marque de luxe souhaitait refondre son expérience e-commerce pour mieux refléter son positionnement premium.",
+            "Offrir une interface fluide pour parcourir, rechercher et filtrer l'ensemble des Pokémon.",
         solution:
-            "Création d'une expérience shopping immersive avec des animations fluides, une navigation intuitive et un checkout optimisé.",
+            "Une SPA performante consommant une API REST dédiée, avec recherche, filtres par type et fiches détaillées.",
         results: [
-            "+60% de conversion",
-            "+25% de panier moyen",
-            "Temps de session x2",
+            "Recherche et filtres instantanés",
+            "API REST maison servant les données",
+            "Interface responsive et animée",
         ],
-        stack: ["Next.js", "Shopify", "GSAP", "Sanity CMS"],
-        liveUrl: "https://example.com",
+        stack: ["React", "TypeScript", "Tailwind CSS", "Node.js", "API REST"],
     },
     {
         id: 3,
-        title: "App Mobile Santé",
+        title: "Clone Netflix",
         description:
-            "Application de suivi santé et bien-être avec coaching personnalisé.",
-        tags: ["Mobile", "UI/UX", "HealthTech"],
-        role: "Product Designer",
-        year: "2023",
-        image:
-            "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
-        color: "from-green-500/20 to-emerald-500/20",
+            "Reproduction de l'interface Netflix avec catalogue dynamique, catégories et lecture de bandes-annonces.",
+        tags: ["Web", "Streaming", "Next.js"],
+        role: "Développeur Front-End",
+        year: "2024",
+        image: "/images/netflix.png",
+        color: "from-neutral-500/20 to-red-600/20",
         context:
-            "Une startup HealthTech voulait créer une app de coaching santé accessible et motivante.",
+            "Recréer l'expérience d'une plateforme de streaming pour approfondir la consommation d'API et l'UI dynamique.",
         solution:
-            "Design d'une app gamifiée avec suivi des objectifs, rappels intelligents et communauté intégrée.",
+            "Une interface fidèle à Netflix avec carrousels par catégorie, données de films tierces et lecture des bandes-annonces.",
         results: [
-            "50K+ téléchargements",
-            "4.8 étoiles App Store",
-            "85% de rétention à 30 jours",
+            "UI fidèle avec carrousels dynamiques",
+            "Intégration d'une API de films tierce",
+            "Navigation fluide et responsive",
         ],
-        stack: ["React Native", "Firebase", "Node.js", "Figma"],
+        stack: ["Next.js", "TypeScript", "Tailwind CSS", "API REST"],
     },
     {
         id: 4,
-        title: "Plateforme SaaS B2B",
+        title: "Pokémon Market Scan",
         description:
-            "Solution de gestion de projet collaborative pour équipes distribuées.",
-        tags: ["SaaS", "Web", "Collaboration"],
-        role: "Frontend Developer",
-        year: "2023",
-        image:
-            "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-        color: "from-orange-500/20 to-yellow-500/20",
+            "Application mobile de scan de cartes Pokémon pour suivre leur cote et gérer sa collection.",
+        tags: ["Mobile", "React Native", "Scan"],
+        role: "Développeur Mobile",
+        year: "2025",
+        image: "/images/scan-poke.png",
+        color: "from-purple-500/20 to-indigo-500/20",
         context:
-            "Une entreprise B2B avait besoin d'une plateforme de collaboration pour ses clients grands comptes.",
+            "Aider les collectionneurs à identifier une carte et à connaître sa valeur de marché en un scan.",
         solution:
-            "Développement d'une interface performante avec gestion des permissions, tableaux Kanban et intégrations tierces.",
+            "Une app mobile qui scanne les cartes, récupère leur cote via API et permet de constituer et suivre sa collection.",
         results: [
-            "200+ entreprises clientes",
-            "Temps de réponse < 100ms",
-            "99.9% uptime",
+            "Scan et reconnaissance des cartes",
+            "Cote de marché en temps réel via API",
+            "Gestion et suivi de la collection",
         ],
-        stack: ["Vue.js", "GraphQL", "PostgreSQL", "Docker"],
-        liveUrl: "https://example.com",
-        repoUrl: "https://github.com",
+        stack: ["React Native", "TypeScript", "API REST"],
     },
 ];
 
 export const skillCategories = [
     {
-      title: "Design",
-      icon: Palette,
-      skills: [
-        { name: "Figma", icon: Figma },
-        { name: "UI Design", icon: Layers },
-        { name: "UX Research", icon: Wand2 },
-        { name: "Prototyping", icon: Smartphone },
-      ],
-    },
-    {
-      title: "Développement",
+      title: "Front-End",
       icon: Code2,
       skills: [
         { name: "React / Next.js", icon: Code2 },
         { name: "TypeScript", icon: Code2 },
-        { name: "TailwindCSS", icon: Palette },
-        { name: "Node.js", icon: Database },
+        { name: "JavaScript", icon: Code2 },
+        { name: "Tailwind CSS", icon: Palette },
       ],
     },
     {
-      title: "Outils",
-      icon: Globe,
+      title: "Mobile & Back-end",
+      icon: Database,
       skills: [
-        { name: "Git / GitHub", icon: Code2 },
-        { name: "Notion", icon: Layers },
-        { name: "Framer", icon: Wand2 },
-        { name: "Webflow", icon: Globe },
+        { name: "React Native", icon: Smartphone },
+        { name: "Node.js", icon: Database },
+        { name: "API REST", icon: Globe },
+      ],
+    },
+    {
+      title: "Outils & IA",
+      icon: Wand2,
+      skills: [
+        { name: "Figma", icon: Figma },
+        { name: "GitHub", icon: Github },
+        { name: "Cursor", icon: Layers },
+        { name: "Claude", icon: Wand2 },
       ],
     },
   ];

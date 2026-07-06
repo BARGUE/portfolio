@@ -1,24 +1,27 @@
 "use client";
 
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 import { motion, useInView } from "framer-motion";
 import { Download, Eye, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+const CV_PDF = "/images/cv/CV.pdf";
+
 export const CVSection = () => {
   const ref = useRef(null);
+  const router = useRouter();
   const isInView = useInView(ref, { once: true, margin: "0px 0px -10% 0px" });
 
   const handleDownload = () => {
-    const cvPath = "/cv.pdf";
     const link = document.createElement("a");
-    link.href = cvPath;
-    link.download = "CV_Portfolio.pdf";
+    link.href = CV_PDF;
+    link.download = "CV_Maylvin_Bargue.pdf";
     link.click();
   };
 
   const handleView = () => {
-    window.open("/cv.pdf", "_blank");
+    router.push("/cv");
   };
 
   return (
@@ -53,7 +56,7 @@ export const CVSection = () => {
                   Curriculum Vitae
                 </span>
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  Téléchargez mon <span className="gradient-text">CV</span>
+                  Consultez mon <span className="gradient-text">CV</span>
                 </h2>
                 <p className="text-muted-foreground mb-8 max-w-md mx-auto">
                   Retrouvez mon parcours complet, mes compétences et mes
@@ -64,10 +67,8 @@ export const CVSection = () => {
                   <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
                     <span className="flex items-center gap-2">
                       <FileText className="w-4 h-4" />
-                      CV_Portfolio.pdf
+                      CV_Maylvin_Bargue.pdf
                     </span>
-                    <span className="w-1 h-1 rounded-full bg-muted-foreground/50" />
-                    <span>~150 Ko</span>
                   </div>
                 </div>
 

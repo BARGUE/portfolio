@@ -70,9 +70,9 @@ export const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto text-balance"
           >
-            Designer UI/UX & Développeur Frontend passionné par la création
-            d&apos;interfaces élégantes et d&apos;expériences utilisateur
-            mémorables.
+            Développeur Front-End (5+ ans), expert React et Next.js. Je conçois
+            des interfaces performantes, accessibles et maintenables, au service
+            de l&apos;expérience utilisateur et des enjeux business.
           </motion.p>
 
           <motion.div

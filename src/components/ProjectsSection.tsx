@@ -8,10 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Project, projects } from "@/lib/dataProjects";
 import Image from "next/image";
 
-const allTags = [
-  "Tous",
-  ...Array.from(new Set(projects.flatMap((p: Project) => p.tags))),
-];
+const allTags = ["Tous", "Web", "Mobile"];
 
 export const ProjectsSection = () => {
   const [selectedTag, setSelectedTag] = useState("Tous");
@@ -80,18 +77,27 @@ export const ProjectsSection = () => {
                 className="group cursor-pointer"
               >
                 <div className="glass-card overflow-hidden card-hover">
-                  <div className="relative aspect-[16/10] overflow-hidden">
+                  <div className="relative aspect-[16/10] overflow-hidden transform-gpu">
                     <div
                       className={`absolute inset-0 bg-gradient-to-br ${project.color} mix-blend-overlay z-10`}
                     />
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                      width={1000}
-                      height={1000}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent z-20" />
+                    {project.image ? (
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                        width={1000}
+                        height={1000}
+                      />
+                    ) : (
+                      <div
+                        className={`w-full h-full flex items-center justify-center bg-gradient-to-br ${project.color}`}
+                      >
+                        <span className="text-2xl font-bold text-foreground/70 px-6 text-center">
+                          {project.title}
+                        </span>
+                      </div>
+                    )}
                   </div>
 
                   <div className="p-6">
@@ -152,11 +158,21 @@ export const ProjectsSection = () => {
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${selectedProject.color} mix-blend-overlay z-10`}
                 />
-                <img
-                  src={selectedProject.image}
-                  alt={selectedProject.title}
-                  className="w-full h-full object-cover"
-                />
+                {selectedProject.image ? (
+                  <img
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div
+                    className={`w-full h-full flex items-center justify-center bg-gradient-to-br ${selectedProject.color}`}
+                  >
+                    <span className="text-3xl font-bold text-foreground/70 px-8 text-center">
+                      {selectedProject.title}
+                    </span>
+                  </div>
+                )}
                 <button
                   onClick={() => setSelectedProject(null)}
                   className="absolute top-4 right-4 z-20 p-2 rounded-full bg-background/50 backdrop-blur-sm hover:bg-background/80 transition-colors"

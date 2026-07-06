@@ -1,31 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Linkedin, Github, Dribbble, Mail } from "lucide-react";
+import { Linkedin, Github, Mail } from "lucide-react";
 
 const socialLinks = [
   {
     name: "LinkedIn",
     icon: Linkedin,
-    href: "https://linkedin.com/in/votre-profil",
+    href: "https://linkedin.com/in/maylvin-bargue",
     color: "hover:text-[#0A66C2]",
   },
   {
     name: "GitHub",
     icon: Github,
-    href: "https://github.com/votre-profil",
+    href: "https://github.com/BARGUE",
     color: "hover:text-foreground",
-  },
-  {
-    name: "Dribbble",
-    icon: Dribbble,
-    href: "https://dribbble.com/votre-profil",
-    color: "hover:text-[#EA4C89]",
   },
   {
     name: "Email",
     icon: Mail,
-    href: "mailto:contact@votre-email.com",
+    href: "mailto:contact@maylkirian@gmail.com",
     color: "hover:text-primary",
   },
 ];
@@ -72,7 +66,7 @@ export const Footer = () => {
 
           {/* Copyright */}
           <p className="text-sm text-muted-foreground">
-            © {currentYear} Votre Nom — Portfolio
+            © {currentYear} Maylvin Bargue — Portfolio
           </p>
         </div>
       </div>
