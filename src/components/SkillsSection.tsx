@@ -1,13 +1,3 @@
-import {
-  Figma,
-  Code2,
-  Palette,
-  Database,
-  Smartphone,
-  Globe,
-  Layers,
-  Wand2,
-} from "lucide-react";
 import { skillCategories } from "@/lib/dataProjects";
 
 export const SkillsSection = () => {
