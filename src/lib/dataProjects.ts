@@ -114,6 +114,29 @@ export const projects: Project[] = [
         stack: ["React Native", "TypeScript", "API REST"],
         repoUrl: "https://github.com/BARGUE/poke-scan-mobile",
     },
+    {
+        id: 5,
+        title: "Shopping Family",
+        description:
+            "Application mobile qui suggère des recettes selon ses besoins, son temps et son régime alimentaire, et génère la liste de courses associée.",
+        tags: ["Mobile", "React Native", "Cuisine"],
+        role: "Développeur Mobile",
+        year: "2025",
+        image:
+            "https://images.unsplash.com/photo-1543168256-418811576931?w=800&h=600&fit=crop",
+        color: "from-emerald-500/20 to-lime-500/20",
+        context:
+            "Simplifier l'organisation des repas d'une famille : trouver quoi cuisiner selon le temps disponible et les contraintes alimentaires, sans oublier d'ingrédients au moment des courses.",
+        solution:
+            "Une app mobile qui filtre les recettes par besoins, temps de préparation et régime alimentaire, puis agrège automatiquement les ingrédients des recettes choisies en une liste de courses.",
+        results: [
+            "Suggestions de recettes filtrées par temps et régime alimentaire",
+            "Liste de courses générée à partir des recettes sélectionnées",
+            "Organisation des repas de la semaine en quelques minutes",
+        ],
+        stack: ["React Native", "TypeScript", "API REST"],
+        repoUrl: "https://github.com/BARGUE/shopping-family",
+    },
 ];
 
 export const skillCategories = [
