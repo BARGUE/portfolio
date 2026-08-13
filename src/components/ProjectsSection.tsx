@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Project, projects } from "@/lib/dataProjects";
+import { isFullStack, Project, projects } from "@/lib/dataProjects";
 import Image from "next/image";
 
 const allTags = ["Tous", "Web", "Mobile"];
@@ -20,7 +20,6 @@ const allTags = ["Tous", "Web", "Mobile"];
 export const ProjectsSection = () => {
   const [selectedTag, setSelectedTag] = useState("Tous");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [gitMenuId, setGitMenuId] = useState<number | null>(null);
 
   const filteredProjects =
     selectedTag === "Tous"
@@ -64,7 +63,6 @@ export const ProjectsSection = () => {
             <div
               key={project.id}
               onClick={() => setSelectedProject(project)}
-              onMouseLeave={() => setGitMenuId(null)}
               className="group cursor-pointer"
             >
                 <div className="glass-card overflow-hidden card-hover">
@@ -91,87 +89,46 @@ export const ProjectsSection = () => {
                     )}
 
                     {/* Hover actions */}
-                    <div className="absolute inset-0 z-20 flex items-center justify-center gap-4 bg-background/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      {(() => {
-                        const hasFront = !!project.repoFrontUrl;
-                        const hasBack = !!project.repoBackUrl;
-                        const hasSplit = hasFront || hasBack;
-
-                        // Un seul repo : lien direct
-                        if (!hasSplit && project.repoUrl) {
-                          return (
-                            <a
-                              href={project.repoUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={(e) => e.stopPropagation()}
-                              aria-label={`Code source de ${project.title}`}
-                              title="Code source"
-                              className="p-3 rounded-full bg-background/70 backdrop-blur-sm text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
-                            >
-                              <Github className="w-5 h-5" />
-                            </a>
-                          );
-                        }
-
-                        // Front et/ou back : icône Git avec menu de choix
-                        if (!hasSplit) return null;
-                        const isOpen = gitMenuId === project.id;
-                        return (
-                          <div className="relative">
-                            <button
-                              type="button"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                setGitMenuId(isOpen ? null : project.id);
-                              }}
-                              aria-label={`Voir le code de ${project.title}`}
-                              aria-expanded={isOpen}
-                              title="Voir le code"
-                              className="p-3 rounded-full bg-background/70 backdrop-blur-sm text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
-                            >
-                              <Github className="w-5 h-5" />
-                            </button>
-                            <AnimatePresence>
-                              {isOpen && (
-                                <motion.div
-                                  initial={{ opacity: 0, y: 6, scale: 0.95 }}
-                                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                                  exit={{ opacity: 0, y: 6, scale: 0.95 }}
-                                  transition={{ duration: 0.15 }}
-                                  onClick={(e) => e.stopPropagation()}
-                                  className="absolute left-1/2 top-full z-30 mt-2 flex min-w-36 -translate-x-1/2 flex-col gap-1 rounded-xl border border-border bg-background/95 p-1.5 shadow-lg backdrop-blur-sm"
-                                >
-                                  {hasFront && (
-                                    <a
-                                      href={project.repoFrontUrl}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      onClick={(e) => e.stopPropagation()}
-                                      className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
-                                    >
-                                      <Code2 className="w-4 h-4" />
-                                      Front-end
-                                    </a>
-                                  )}
-                                  {hasBack && (
-                                    <a
-                                      href={project.repoBackUrl}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      onClick={(e) => e.stopPropagation()}
-                                      className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
-                                    >
-                                      <Server className="w-4 h-4" />
-                                      Back-end
-                                    </a>
-                                  )}
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
-                          </div>
-                        );
-                      })()}
+                    <div className="absolute inset-0 z-20 flex items-center justify-center gap-3 bg-background/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      {project.repoUrl && (
+                        <a
+                          href={project.repoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          aria-label={`Code source de ${project.title}`}
+                          title="Code source"
+                          className="p-3 rounded-full bg-background/70 backdrop-blur-sm text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+                        >
+                          <Github className="w-5 h-5" />
+                        </a>
+                      )}
+                      {project.repoFrontUrl && (
+                        <a
+                          href={project.repoFrontUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          aria-label={`Code front-end de ${project.title}`}
+                          title="Code front-end"
+                          className="p-3 rounded-full bg-background/70 backdrop-blur-sm text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+                        >
+                          <Code2 className="w-5 h-5" />
+                        </a>
+                      )}
+                      {project.repoBackUrl && (
+                        <a
+                          href={project.repoBackUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          aria-label={`Code back-end de ${project.title}`}
+                          title="Code back-end"
+                          className="p-3 rounded-full bg-background/70 backdrop-blur-sm text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+                        >
+                          <Server className="w-5 h-5" />
+                        </a>
+                      )}
                       {project.liveUrl && (
                         <a
                           href={project.liveUrl}
@@ -199,6 +156,15 @@ export const ProjectsSection = () => {
                           {tag}
                         </Badge>
                       ))}
+                      {isFullStack(project) && (
+                        <Badge
+                          variant="outline"
+                          className="text-xs gap-1 border-primary/40 text-primary"
+                        >
+                          <Server className="w-3 h-3" />
+                          Front + Back
+                        </Badge>
+                      )}
                       <span className="text-xs text-muted-foreground ml-auto">
                         {project.year}
                       </span>
@@ -276,6 +242,15 @@ export const ProjectsSection = () => {
                       {tag}
                     </Badge>
                   ))}
+                  {isFullStack(selectedProject) && (
+                    <Badge
+                      variant="outline"
+                      className="gap-1 border-primary/40 text-primary"
+                    >
+                      <Server className="w-3.5 h-3.5" />
+                      Front + Back
+                    </Badge>
+                  )}
                 </div>
 
                 <h2 className="text-2xl md:text-3xl font-bold mb-2">

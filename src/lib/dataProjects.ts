@@ -1,4 +1,17 @@
-import { Figma, Palette, Smartphone, Layers, Wand2, Code2, Database, Globe, Github } from "lucide-react";
+import {
+    Atom,
+    Code2,
+    Figma,
+    Github,
+    Globe,
+    Layers,
+    Palette,
+    Server,
+    Smartphone,
+    Triangle,
+    Wand2,
+    type LucideIcon,
+} from "lucide-react";
 
 export interface Project {
     id: number;
@@ -139,34 +152,69 @@ export const projects: Project[] = [
     },
 ];
 
+/** Un projet est full-stack quand j'ai aussi écrit son API. */
+export const isFullStack = (project: Project) =>
+    Boolean(project.repoBackUrl) || project.stack.includes("Node.js");
+
+type TechGroup = "Front-End" | "Back-End" | "Mobile";
+
+// Chaque technologie citée dans le `stack` d'un projet est décrite ici :
+// la section Compétences est construite à partir des projets, donc ajouter
+// une techno à un projet suffit à la faire apparaître dans le portfolio.
+// `groups` peut en contenir plusieurs (TypeScript sert au web comme au mobile) ;
+// le premier est celui où la techno est mise en avant.
+const techMeta: Record<string, { groups: TechGroup[]; icon: LucideIcon }> = {
+    React: { groups: ["Front-End"], icon: Atom },
+    "Next.js": { groups: ["Front-End"], icon: Triangle },
+    TypeScript: { groups: ["Front-End", "Mobile"], icon: Code2 },
+    "Tailwind CSS": { groups: ["Front-End"], icon: Palette },
+    "Node.js": { groups: ["Back-End"], icon: Server },
+    "API REST": { groups: ["Back-End", "Mobile"], icon: Globe },
+    "React Native": { groups: ["Mobile"], icon: Smartphone },
+};
+
+const groupMeta: { title: TechGroup; icon: LucideIcon }[] = [
+    { title: "Front-End", icon: Code2 },
+    { title: "Back-End", icon: Server },
+    { title: "Mobile", icon: Smartphone },
+];
+
+const usageByTech = projects.reduce<Record<string, number>>((acc, project) => {
+    for (const tech of project.stack) {
+        acc[tech] = (acc[tech] ?? 0) + 1;
+    }
+    return acc;
+}, {});
+
+// Techno principale du groupe d'abord, puis la plus utilisée,
+// puis ordre alphabétique à égalité.
+const techSkillsByGroup = groupMeta.map(({ title, icon }) => ({
+    title,
+    icon,
+    skills: Object.keys(usageByTech)
+        .filter((tech) => (techMeta[tech]?.groups ?? ["Back-End"]).includes(title))
+        .sort((a, b) => {
+            const primary = (tech: string) =>
+                techMeta[tech]?.groups[0] === title ? 0 : 1;
+            return (
+                primary(a) - primary(b) ||
+                usageByTech[b] - usageByTech[a] ||
+                a.localeCompare(b)
+            );
+        })
+        .map((tech) => ({ name: tech, icon: techMeta[tech]?.icon ?? Code2 })),
+}));
+
 export const skillCategories = [
+    ...techSkillsByGroup,
     {
-      title: "Front-End",
-      icon: Code2,
-      skills: [
-        { name: "React / Next.js", icon: Code2 },
-        { name: "TypeScript", icon: Code2 },
-        { name: "JavaScript", icon: Code2 },
-        { name: "Tailwind CSS", icon: Palette },
-      ],
+        title: "Outils & IA",
+        icon: Wand2,
+        skills: [
+            { name: "Figma", icon: Figma },
+            { name: "GitHub", icon: Github },
+            { name: "Cursor", icon: Layers },
+            { name: "Claude", icon: Wand2 },
+        ],
     },
-    {
-      title: "Mobile & Back-end",
-      icon: Database,
-      skills: [
-        { name: "React Native", icon: Smartphone },
-        { name: "Node.js", icon: Database },
-        { name: "API REST", icon: Globe },
-      ],
-    },
-    {
-      title: "Outils & IA",
-      icon: Wand2,
-      skills: [
-        { name: "Figma", icon: Figma },
-        { name: "GitHub", icon: Github },
-        { name: "Cursor", icon: Layers },
-        { name: "Claude", icon: Wand2 },
-      ],
-    },
-  ];
+];

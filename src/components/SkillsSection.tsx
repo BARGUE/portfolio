@@ -21,11 +21,11 @@ export const SkillsSection = () => {
         </div>
 
         {/* Skills Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {skillCategories.map((category) => (
             <div
               key={category.title}
-              className="glass-card p-8"
+              className="glass-card p-6"
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
