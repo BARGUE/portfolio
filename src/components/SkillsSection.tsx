@@ -1,52 +1,62 @@
 import { skillCategories } from "@/lib/dataProjects";
+import { cssVars } from "@/lib/utils";
+
+const extras = [
+  {
+    label: "Langues",
+    title: "Français · Anglais",
+    description: "Français : langue maternelle. Anglais : intermédiaire.",
+  },
+  {
+    label: "Centres d'intérêt",
+    title: "Cinéma, jeux vidéo, musique",
+    description: "Sports : ski alpin, VTT, randonnée.",
+  },
+  {
+    label: "Collaboration",
+    title: "Squad agile",
+    description:
+      "Produit, design et back-end, avec marketing, commercial et partenaires internationaux.",
+  },
+];
 
 export const SkillsSection = () => {
   return (
-    <section id="skills" className="py-24 md:py-32 relative overflow-hidden">
-      <div className="absolute inset-0 mesh-background opacity-30" />
-
-      <div className="container mx-auto px-6 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="text-sm font-semibold text-primary uppercase tracking-wider mb-4 block">
-            Compétences
-          </span>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Stack & <span className="gradient-text">Expertise</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Les outils et technologies que j&apos;utilise pour donner vie à vos
-            projets.
-          </p>
+    <section id="skills" className="section flush">
+      <div className="wrap">
+        <div className="head rv">
+          <span className="mono">Compétences</span>
+          <h2>Stack &amp; expertise</h2>
+          <p>Les outils et technologies que j&apos;utilise pour donner vie à vos projets.</p>
         </div>
 
-        {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {skillCategories.map((category) => (
+        <div className="stack">
+          {skillCategories.map((category, i) => (
             <div
               key={category.title}
-              className="glass-card p-6"
+              className="box rv"
+              style={cssVars({ "--d": `${i * 0.06}s` })}
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <category.icon className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold">{category.title}</h3>
-              </div>
-
-              <div className="space-y-4">
+              <h3>{category.title}</h3>
+              <ul>
                 {category.skills.map((skill) => (
-                  <div
-                    key={skill.name}
-                    className="flex items-center gap-3 p-3 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-background/50 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                      <skill.icon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                    </div>
-                    <span className="font-medium text-sm">{skill.name}</span>
-                  </div>
+                  <li key={skill}>{skill}</li>
                 ))}
-              </div>
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div className="tl">
+          {extras.map((item, i) => (
+            <div
+              key={item.label}
+              className="box rv"
+              style={cssVars({ "--d": `${i * 0.08}s` })}
+            >
+              <span className="mono">{item.label}</span>
+              <h4>{item.title}</h4>
+              <p>{item.description}</p>
             </div>
           ))}
         </div>

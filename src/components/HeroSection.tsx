@@ -1,98 +1,59 @@
-"use client";
+import { Fragment } from "react";
+import { cssVars } from "@/lib/utils";
 
-import { motion } from "framer-motion";
-import { ArrowDown, Download } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { scrollToProjects } from "@/lib/utils";
+const titleWords = ["Je", "conçois", "des", "interfaces"];
+const rollingWords = ["performantes.", "accessibles.", "soignées."];
+
+const ArrowIcon = () => (
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+    <path d="M4 12L12 4M5 4h7v7" />
+  </svg>
+);
 
 export const HeroSection = () => {
-
   return (
-    <section
-      id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-    >
-      <div className="absolute inset-0 mesh-background" />
-      <div className="absolute inset-0 noise-overlay" />
+    <header className="hero">
+      <div className="wrap">
+        <span className="chip up">
+          <i className="dot" />
+          Maylvin Bargue · Développeur Front-End React / Next.js
+        </span>
 
-      <motion.div
-        className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full opacity-30 blur-[120px]"
-        style={{
-          background:
-            "radial-gradient(circle, hsl(185 100% 50%) 0%, transparent 70%)",
-        }}
-        animate={{
-          scale: [1, 1.2, 1],
-          x: [0, 50, 0],
-          y: [0, -30, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+        {/* Mots qui montent un à un, puis adjectif qui défile */}
+        <h1>
+          {titleWords.map((word, i) => (
+            <Fragment key={word}>
+              <span className="w">
+                <span style={cssVars({ "--i": i })}>{word}</span>
+              </span>{" "}
+            </Fragment>
+          ))}
+          <span className="roll" aria-label={rollingWords.join(" ")}>
+            <span className="track" aria-hidden="true">
+              {[...rollingWords, rollingWords[0]].map((word, i) => (
+                <span key={i}>{word}</span>
+              ))}
+            </span>
+          </span>
+        </h1>
 
-      <motion.div
-        className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full opacity-20 blur-[100px]"
-        style={{
-          background:
-            "radial-gradient(circle, hsl(260 100% 60%) 0%, transparent 70%)",
-        }}
-        animate={{
-          scale: [1.2, 1, 1.2],
-          x: [0, -30, 0],
-          y: [0, 50, 0],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+        <p className="lead up" style={cssVars({ "--d": ".55s" })}>
+          Développeur front-end avec 5 ans d&apos;expérience (3 ans
+          d&apos;alternance, 2 ans en CDI) sur des produits web en production à
+          forte audience. Spécialisé React et Next.js (SSR, performance,
+          architecture modulaire), j&apos;ai aussi développé deux projets
+          mobiles en React Native avec Expo.
+        </p>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1
-            className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-balance"
-          >
-            Je conçois des{" "}
-            <span className="gradient-text">expériences digitales</span>{" "}
-            modernes.
-          </h1>
-
-          <p
-            className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto text-balance"
-          >
-            Développeur Front-End (5+ ans), expert React et Next.js. Je conçois
-            des interfaces performantes, accessibles et maintenables, au service
-            de l&apos;expérience utilisateur et des enjeux business.
-          </p>
-
-          <div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <Button
-              onClick={() => scrollToProjects("#projects")}
-              size="lg"
-              className="group px-8 py-6 text-base font-semibold bg-primary text-primary-foreground hover:bg-primary/90 glow-effect"
-            >
-              Voir mes projets
-              <ArrowDown className="ml-2 h-4 w-4 group-hover:translate-y-1 transition-transform" />
-            </Button>
-
-            <Button
-              onClick={() => scrollToProjects("#cv")}
-              variant="outline"
-              size="lg"
-              className="px-8 py-6 text-base font-semibold border-border hover:bg-secondary"
-            >
-              <Download className="mr-2 h-4 w-4" />
-              Télécharger mon CV
-            </Button>
-          </div>
+        <div className="btns up" style={cssVars({ "--d": ".7s" })}>
+          <a className="btn main" href="#projets">
+            Voir mes projets <ArrowIcon />
+          </a>
+          <a className="btn" href="#cv">
+            Télécharger mon CV
+          </a>
         </div>
       </div>
-    </section>
+    </header>
   );
 };

@@ -1,18 +1,3 @@
-import {
-    Atom,
-    Code2,
-    Figma,
-    Github,
-    Globe,
-    Layers,
-    Palette,
-    Server,
-    Smartphone,
-    Triangle,
-    Wand2,
-    type LucideIcon,
-} from "lucide-react";
-
 export interface Project {
     id: number;
     title: string;
@@ -20,8 +5,8 @@ export interface Project {
     tags: string[];
     role: string;
     year: string;
-    image?: string;
-    color: string;
+    /** Dégradé de fond de la maquette affichée sur la carte. */
+    gradient: string;
     context: string;
     solution: string;
     results: string[];
@@ -41,9 +26,7 @@ export const projects: Project[] = [
         tags: ["Web", "Full-Stack", "SaaS"],
         role: "Développeur Front-End & API",
         year: "2025",
-        image:
-            "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=600&fit=crop",
-        color: "from-cyan-500/20 to-blue-500/20",
+        gradient: "linear-gradient(135deg, #1aa37a, #0b3a2e)",
         context:
             "Permettre à chacun de créer un CV professionnel et de l'exporter en PDF sans effort de mise en page.",
         solution:
@@ -65,9 +48,7 @@ export const projects: Project[] = [
         tags: ["Web", "API REST", "React"],
         role: "Développeur Front-End & API",
         year: "2025",
-        image:
-            "https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?w=800&h=600&fit=crop",
-        color: "from-red-500/20 to-yellow-500/20",
+        gradient: "linear-gradient(135deg, #34c7b0, #12403f)",
         context:
             "Offrir une interface fluide pour parcourir, rechercher et filtrer l'ensemble des Pokémon.",
         solution:
@@ -90,8 +71,7 @@ export const projects: Project[] = [
         tags: ["Web", "Streaming", "Next.js"],
         role: "Développeur Front-End",
         year: "2024",
-        image: "/images/netflix.png",
-        color: "from-neutral-500/20 to-red-600/20",
+        gradient: "linear-gradient(135deg, #e5524c, #4a1a20)",
         context:
             "Recréer l'expérience d'une plateforme de streaming pour approfondir la consommation d'API et l'UI dynamique.",
         solution:
@@ -113,8 +93,7 @@ export const projects: Project[] = [
         tags: ["Mobile", "React Native", "Scan"],
         role: "Développeur Mobile",
         year: "2025",
-        image: "/images/scan-poke.png",
-        color: "from-purple-500/20 to-indigo-500/20",
+        gradient: "linear-gradient(135deg, #6c8cff, #1c2a66)",
         context:
             "Aider les collectionneurs à identifier une carte et à connaître sa valeur de marché en un scan.",
         solution:
@@ -135,9 +114,7 @@ export const projects: Project[] = [
         tags: ["Mobile", "React Native", "Cuisine"],
         role: "Développeur Mobile",
         year: "2025",
-        image:
-            "https://images.unsplash.com/photo-1543168256-418811576931?w=800&h=600&fit=crop",
-        color: "from-emerald-500/20 to-lime-500/20",
+        gradient: "linear-gradient(135deg, #f0b455, #5a3f12)",
         context:
             "Simplifier l'organisation des repas d'une famille : trouver quoi cuisiner selon le temps disponible et les contraintes alimentaires, sans oublier d'ingrédients au moment des courses.",
         solution:
@@ -161,23 +138,19 @@ type TechGroup = "Front-End" | "Back-End" | "Mobile";
 // Chaque technologie citée dans le `stack` d'un projet est décrite ici :
 // la section Compétences est construite à partir des projets, donc ajouter
 // une techno à un projet suffit à la faire apparaître dans le portfolio.
-// `groups` peut en contenir plusieurs (TypeScript sert au web comme au mobile) ;
-// le premier est celui où la techno est mise en avant.
-const techMeta: Record<string, { groups: TechGroup[]; icon: LucideIcon }> = {
-    React: { groups: ["Front-End"], icon: Atom },
-    "Next.js": { groups: ["Front-End"], icon: Triangle },
-    TypeScript: { groups: ["Front-End", "Mobile"], icon: Code2 },
-    "Tailwind CSS": { groups: ["Front-End"], icon: Palette },
-    "Node.js": { groups: ["Back-End"], icon: Server },
-    "API REST": { groups: ["Back-End", "Mobile"], icon: Globe },
-    "React Native": { groups: ["Mobile"], icon: Smartphone },
+// Une techno peut appartenir à plusieurs groupes (TypeScript sert au web comme
+// au mobile) ; le premier est celui où elle est mise en avant.
+const techGroups: Record<string, TechGroup[]> = {
+    React: ["Front-End"],
+    "Next.js": ["Front-End"],
+    TypeScript: ["Front-End", "Mobile"],
+    "Tailwind CSS": ["Front-End"],
+    "Node.js": ["Back-End"],
+    "API REST": ["Back-End", "Mobile"],
+    "React Native": ["Mobile"],
 };
 
-const groupMeta: { title: TechGroup; icon: LucideIcon }[] = [
-    { title: "Front-End", icon: Code2 },
-    { title: "Back-End", icon: Server },
-    { title: "Mobile", icon: Smartphone },
-];
+const groupTitles: TechGroup[] = ["Front-End", "Back-End", "Mobile"];
 
 const usageByTech = projects.reduce<Record<string, number>>((acc, project) => {
     for (const tech of project.stack) {
@@ -188,33 +161,21 @@ const usageByTech = projects.reduce<Record<string, number>>((acc, project) => {
 
 // Techno principale du groupe d'abord, puis la plus utilisée,
 // puis ordre alphabétique à égalité.
-const techSkillsByGroup = groupMeta.map(({ title, icon }) => ({
+const techSkillsByGroup = groupTitles.map((title) => ({
     title,
-    icon,
     skills: Object.keys(usageByTech)
-        .filter((tech) => (techMeta[tech]?.groups ?? ["Back-End"]).includes(title))
+        .filter((tech) => (techGroups[tech] ?? ["Back-End"]).includes(title))
         .sort((a, b) => {
-            const primary = (tech: string) =>
-                techMeta[tech]?.groups[0] === title ? 0 : 1;
+            const primary = (tech: string) => (techGroups[tech]?.[0] === title ? 0 : 1);
             return (
                 primary(a) - primary(b) ||
                 usageByTech[b] - usageByTech[a] ||
                 a.localeCompare(b)
             );
-        })
-        .map((tech) => ({ name: tech, icon: techMeta[tech]?.icon ?? Code2 })),
+        }),
 }));
 
-export const skillCategories = [
+export const skillCategories: { title: string; skills: string[] }[] = [
     ...techSkillsByGroup,
-    {
-        title: "Outils & IA",
-        icon: Wand2,
-        skills: [
-            { name: "Figma", icon: Figma },
-            { name: "GitHub", icon: Github },
-            { name: "Cursor", icon: Layers },
-            { name: "Claude", icon: Wand2 },
-        ],
-    },
+    { title: "Outils & IA", skills: ["Figma", "GitHub", "Cursor", "Claude"] },
 ];
