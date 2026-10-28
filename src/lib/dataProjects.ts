@@ -7,6 +7,10 @@ export interface Project {
     year: string;
     /** Dégradé de fond de la maquette affichée sur la carte. */
     gradient: string;
+    /** Visuel affiché sur la carte à la place de la maquette (chemin dans /public). */
+    image?: string;
+    /** "contain" affiche le visuel en entier sur le dégradé au lieu de remplir la carte. */
+    imageFit?: "cover" | "contain";
     context: string;
     solution: string;
     results: string[];
@@ -27,6 +31,7 @@ export const projects: Project[] = [
         role: "Développeur Front-End & API",
         year: "2025",
         gradient: "linear-gradient(135deg, #1aa37a, #0b3a2e)",
+        image: "/images/cv-computer.png",
         context:
             "Permettre à chacun de créer un CV professionnel et de l'exporter en PDF sans effort de mise en page.",
         solution:
@@ -48,7 +53,9 @@ export const projects: Project[] = [
         tags: ["Web", "API REST", "React"],
         role: "Développeur Front-End & API",
         year: "2025",
-        gradient: "linear-gradient(135deg, #34c7b0, #12403f)",
+        gradient: "",
+        image: "/images/pokedex-logo.png",
+        imageFit: "contain",
         context:
             "Offrir une interface fluide pour parcourir, rechercher et filtrer l'ensemble des Pokémon.",
         solution:
@@ -71,7 +78,8 @@ export const projects: Project[] = [
         tags: ["Web", "Streaming", "Next.js"],
         role: "Développeur Front-End",
         year: "2024",
-        gradient: "linear-gradient(135deg, #e5524c, #4a1a20)",
+        gradient: "linear-gradient(135deg, #ffffff, #ececec)",
+        image: "/images/netflix.png",
         context:
             "Recréer l'expérience d'une plateforme de streaming pour approfondir la consommation d'API et l'UI dynamique.",
         solution:
@@ -94,6 +102,7 @@ export const projects: Project[] = [
         role: "Développeur Mobile",
         year: "2025",
         gradient: "linear-gradient(135deg, #6c8cff, #1c2a66)",
+        image: "/images/scan-poke.png",
         context:
             "Aider les collectionneurs à identifier une carte et à connaître sa valeur de marché en un scan.",
         solution:
@@ -115,6 +124,7 @@ export const projects: Project[] = [
         role: "Développeur Mobile",
         year: "2025",
         gradient: "linear-gradient(135deg, #f0b455, #5a3f12)",
+        image: "/images/hero.png",
         context:
             "Simplifier l'organisation des repas d'une famille : trouver quoi cuisiner selon le temps disponible et les contraintes alimentaires, sans oublier d'ingrédients au moment des courses.",
         solution:

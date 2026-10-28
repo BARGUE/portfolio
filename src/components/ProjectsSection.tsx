@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { Project, projects } from "@/lib/dataProjects";
 import { cssVars } from "@/lib/utils";
 
@@ -71,8 +72,23 @@ export const ProjectsSection = () => {
               hidden={selectedTag !== null && !project.tags.includes(selectedTag)}
               style={cssVars({ "--g": project.gradient, "--d": `${(i % 3) * 0.06}s` })}
             >
-              <div className="mock">
-                <div className={project.tags.includes("Mobile") ? "win ph" : "win"} />
+              <div
+                className={
+                  project.image
+                    ? `mock shot${project.imageFit === "contain" ? " contain" : ""}`
+                    : "mock"
+                }
+              >
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt={`Aperçu du projet ${project.title}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                ) : (
+                  <div className={project.tags.includes("Mobile") ? "win ph" : "win"} />
+                )}
               </div>
               <div className="body">
                 <div className="tags">

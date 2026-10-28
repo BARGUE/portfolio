@@ -256,6 +256,10 @@
   .win::after { content: ""; display: block; height: 100%; border-radius: 6px; background: linear-gradient(rgba(255, 255, 255, .35) 0 8px, transparent 8px 16px, rgba(255, 255, 255, .18) 16px 24px, transparent 24px 32px) top/70% 100% no-repeat, linear-gradient(rgba(255, 255, 255, .1), rgba(255, 255, 255, .04)) bottom/100% 55% no-repeat; }
   .win.ph { width: 34%; height: 88%; border-radius: 20px; padding: 22px 10px 10px; }
   .win.ph::before { left: 50%; top: 9px; width: 26px; height: 4px; border-radius: 4px; transform: translateX(-50%); box-shadow: none; background: rgba(255, 255, 255, .4); }
+  .mock.shot::after { content: none; }
+  .mock.shot img { object-fit: cover; transition: transform .6s cubic-bezier(.2, .8, .2, 1); }
+  .card:hover .mock.shot img { transform: scale(1.06); }
+  .mock.shot.contain img { object-fit: contain; padding: 10%; }
   .card .body { padding: 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
   .tags { display: flex; gap: 6px; flex-wrap: wrap; }
   .tags span { font: 500 11px/1 var(--font-mono); padding: 6px 10px; border-radius: 99px; background: var(--s2); color: var(--mute); letter-spacing: .02em; text-transform: uppercase; }

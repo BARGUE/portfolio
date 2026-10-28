@@ -7,7 +7,6 @@ const navItems = [
   { label: "Profil", href: "#apropos" },
   { label: "Projets", href: "#projets" },
   { label: "Stack", href: "#skills" },
-  { label: "Contact", href: "#contact" },
 ];
 
 export const Header = () => {
