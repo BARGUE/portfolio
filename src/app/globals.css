@@ -248,7 +248,7 @@
   .card:nth-child(-n+2) { grid-column: span 3; }
   .projects.f .card { grid-column: span 2; }
   .card:hover { transform: translateY(-5px); }
-  .mock { aspect-ratio: 16/10; background: var(--g); display: grid; place-items: center; overflow: hidden; position: relative; }
+  .mock { aspect-ratio: 16/10; display: grid; place-items: center; overflow: hidden; position: relative; }
   .mock::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 25% 15%, rgba(255, 255, 255, .28), transparent 55%); }
   .win { position: relative; z-index: 1; width: 76%; height: 68%; border-radius: 12px; background: rgba(8, 10, 12, .55); border: 1px solid rgba(255, 255, 255, .22); backdrop-filter: blur(6px); padding: 30px 14px 14px; transition: transform .6s cubic-bezier(.2, .8, .2, 1); }
   .card:hover .win { transform: scale(1.06) translateY(-4px); }
@@ -270,7 +270,7 @@
   .links a:hover { text-decoration: underline; text-underline-offset: 4px; }
 
   /* Stack */
-  .stack { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap); }
+  .stack { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); }
   .stack ul { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
   .stack li { font-size: .82rem; padding: 6px 12px; border: 1px solid var(--line); border-radius: 99px; transition: background .2s, color .2s, transform .2s; }
   .stack li:hover { background: var(--ac); color: #04130d; transform: translateY(-2px); }

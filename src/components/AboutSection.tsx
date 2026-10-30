@@ -1,6 +1,6 @@
 import { cssVars } from "@/lib/utils";
 
-const marquee = ["React", "Next.js", "TypeScript", "Tailwind", "React Native", "Expo", "Node.js", "Figma"];
+const marquee = ["React", "Next.js", "TypeScript", "Tailwind", "React Native", "Expo", "TanStack Query", "Radix UI", "Cloudflare Workers", "Figma"];
 
 const facts = [
   {
@@ -49,7 +49,7 @@ export const AboutSection = () => {
             <p>
               5 ans d&apos;expérience chez Clig Digital, dont 3 en alternance et
               2 en CDI. À l&apos;aise en squad agile aux côtés du produit, du
-              design et du back-end, avec un workflow IA (Claude, Cursor) qui
+              design et du back-end, avec un workflow IA (Claude Code) qui
               garde l&apos;exigence d&apos;un code propre et maintenable.
             </p>
             <div className="row">

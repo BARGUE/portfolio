@@ -24,9 +24,9 @@ export interface Project {
 export const projects: Project[] = [
     {
         id: 1,
-        title: "Générateur de CV",
+        title: "CVBuilder",
         description:
-            "Application web de création et d'export de CV personnalisables, adossée à une API dédiée.",
+            "Application de création de CV : éditeur guidé en 7 étapes, 9 templates, export PDF et import de CV assisté par IA.",
         tags: ["Web", "Full-Stack", "SaaS"],
         role: "Développeur Front-End & API",
         year: "2025",
@@ -35,22 +35,22 @@ export const projects: Project[] = [
         context:
             "Permettre à chacun de créer un CV professionnel et de l'exporter en PDF sans effort de mise en page.",
         solution:
-            "Un éditeur web avec templates modulaires et prévisualisation en temps réel, connecté à une API REST gérant les données et la génération des documents.",
+            "Un éditeur guidé en 7 étapes avec aperçu en temps réel, interface bilingue FR/EN et import d'un CV existant assisté par IA (API Claude).",
         results: [
-            "Édition en temps réel avec prévisualisation instantanée",
-            "Export PDF fidèle au rendu à l'écran",
-            "Architecture front / API découplée et réutilisable",
+            "9 templates avec aperçu en temps réel",
+            "Export PDF côté client",
+            "Authentification par cookie httpOnly et routes protégées",
         ],
-        stack: ["Next.js", "TypeScript", "Tailwind CSS", "Node.js", "API REST"],
+        stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Radix UI", "Zod", "next-intl"],
         repoFrontUrl: "https://github.com/BARGUE/cv-builder",
         repoBackUrl: "https://github.com/BARGUE/api-cv-builder",
     },
     {
         id: 2,
-        title: "Pokédex Web",
+        title: "Pokédex",
         description:
-            "Site web d'exploration du Pokédex, alimenté par une API maison servant les données des Pokémon.",
-        tags: ["Web", "API REST", "React"],
+            "Catalogue bilingue paginé avec recherche, filtres, fiches détaillées et comparateur, en rendu serveur avec revalidation ISR.",
+        tags: ["Web", "Next.js", "ISR"],
         role: "Développeur Front-End & API",
         year: "2025",
         gradient: "",
@@ -59,14 +59,14 @@ export const projects: Project[] = [
         context:
             "Offrir une interface fluide pour parcourir, rechercher et filtrer l'ensemble des Pokémon.",
         solution:
-            "Une SPA performante consommant une API REST dédiée, avec recherche, filtres par type et fiches détaillées.",
+            "Des Server Components avec revalidation ISR pour la performance, une UI accessible construite sur Radix et un déploiement sur Vercel.",
         results: [
-            "Recherche et filtres instantanés",
-            "API REST maison servant les données",
-            "Interface responsive et animée",
+            "Recherche, filtres et pagination",
+            "Comparateur de 3 Pokémon",
+            "Rendu serveur et revalidation ISR",
         ],
-        stack: ["React", "TypeScript", "Tailwind CSS", "Node.js", "API REST"],
-        liveUrl: "https://pokedex-three-fawn-73.vercel.app",
+        stack: ["Next.js", "TypeScript", "TanStack Query", "Tailwind CSS", "Radix UI", "Framer Motion", "Vercel"],
+        liveUrl: "https://pokedex-dev.xyz",
         repoFrontUrl: "https://github.com/BARGUE/pokedex",
         repoBackUrl: "https://github.com/BARGUE/api-pokedex",
     },
@@ -95,10 +95,10 @@ export const projects: Project[] = [
     },
     {
         id: 4,
-        title: "Pokémon Market Scan",
+        title: "Poke Scan",
         description:
-            "Application mobile de scan de cartes Pokémon pour suivre leur cote et gérer sa collection.",
-        tags: ["Mobile", "React Native", "Scan"],
+            "Application mobile de scan de cartes Pokémon : identification par IA, cotes réelles du marché et suivi de sa collection.",
+        tags: ["Mobile", "React Native", "IA"],
         role: "Développeur Mobile",
         year: "2025",
         gradient: "linear-gradient(135deg, #6c8cff, #1c2a66)",
@@ -106,35 +106,35 @@ export const projects: Project[] = [
         context:
             "Aider les collectionneurs à identifier une carte et à connaître sa valeur de marché en un scan.",
         solution:
-            "Une app mobile qui scanne les cartes, récupère leur cote via API et permet de constituer et suivre sa collection.",
+            "Un scan par caméra ou galerie identifié par IA (Claude Vision), avec les cotes Cardmarket / TCGplayer récupérées via un proxy Cloudflare Worker : aucune clé API dans l'app.",
         results: [
-            "Scan et reconnaissance des cartes",
-            "Cote de marché en temps réel via API",
-            "Gestion et suivi de la collection",
+            "Identification des cartes par IA",
+            "Cotes réelles Cardmarket / TCGplayer",
+            "Historique, collection par set et thème clair / sombre",
         ],
-        stack: ["React Native", "TypeScript", "API REST"],
+        stack: ["React Native", "Expo", "React", "AsyncStorage", "Cloudflare Workers"],
         repoUrl: "https://github.com/BARGUE/poke-scan-mobile",
     },
     {
         id: 5,
-        title: "Shopping Family",
+        title: "Liste de Courses",
         description:
-            "Application mobile qui suggère des recettes selon ses besoins, son temps et son régime alimentaire, et génère la liste de courses associée.",
+            "Application mobile qui génère en un tap le planning des repas et la liste de courses associée, utilisable hors ligne.",
         tags: ["Mobile", "React Native", "Cuisine"],
         role: "Développeur Mobile",
         year: "2025",
         gradient: "linear-gradient(135deg, #f0b455, #5a3f12)",
         image: "/images/hero.png",
         context:
-            "Simplifier l'organisation des repas d'une famille : trouver quoi cuisiner selon le temps disponible et les contraintes alimentaires, sans oublier d'ingrédients au moment des courses.",
+            "Simplifier l'organisation des repas d'une famille, sans oublier d'ingrédients au moment des courses.",
         solution:
-            "Une app mobile qui filtre les recettes par besoins, temps de préparation et régime alimentaire, puis agrège automatiquement les ingrédients des recettes choisies en une liste de courses.",
+            "Des recettes traduites en français, en unités métriques et aux quantités adaptées au foyer, avec un cache SQLite hors ligne et un design system maison.",
         results: [
-            "Suggestions de recettes filtrées par temps et régime alimentaire",
-            "Liste de courses générée à partir des recettes sélectionnées",
-            "Organisation des repas de la semaine en quelques minutes",
+            "Planning de repas et liste de courses générés en un tap",
+            "Cache SQLite utilisable hors ligne",
+            "Builds et mises à jour OTA via EAS",
         ],
-        stack: ["React Native", "TypeScript", "API REST"],
+        stack: ["React Native", "Expo", "TypeScript", "SQLite", "EAS Build / Update", "Cloudflare Workers"],
         repoUrl: "https://github.com/BARGUE/shopping-family",
     },
 ];
@@ -143,7 +143,12 @@ export const projects: Project[] = [
 export const isFullStack = (project: Project) =>
     Boolean(project.repoBackUrl) || project.stack.includes("Node.js");
 
-type TechGroup = "Front-End" | "Back-End" | "Mobile";
+type TechGroup =
+    | "Front-End"
+    | "Mobile"
+    | "Data & état"
+    | "UI / Design system"
+    | "Back-End & outils";
 
 // Chaque technologie citée dans le `stack` d'un projet est décrite ici :
 // la section Compétences est construite à partir des projets, donc ajouter
@@ -154,27 +159,59 @@ const techGroups: Record<string, TechGroup[]> = {
     React: ["Front-End"],
     "Next.js": ["Front-End"],
     TypeScript: ["Front-End", "Mobile"],
-    "Tailwind CSS": ["Front-End"],
-    "Node.js": ["Back-End"],
-    "API REST": ["Back-End", "Mobile"],
+    "next-intl": ["Front-End"],
     "React Native": ["Mobile"],
+    Expo: ["Mobile"],
+    "EAS Build / Update": ["Mobile"],
+    "TanStack Query": ["Data & état"],
+    "API REST": ["Data & état"],
+    SQLite: ["Data & état"],
+    AsyncStorage: ["Data & état"],
+    Zod: ["Data & état"],
+    "Tailwind CSS": ["UI / Design system"],
+    "Radix UI": ["UI / Design system"],
+    "Framer Motion": ["UI / Design system"],
+    "Cloudflare Workers": ["Back-End & outils"],
+    Vercel: ["Back-End & outils"],
 };
 
-const groupTitles: TechGroup[] = ["Front-End", "Back-End", "Mobile"];
+// Compétences du CV qu'aucun projet du portfolio n'illustre encore :
+// elles s'affichent après celles issues des projets.
+const cvOnlySkills: Record<string, TechGroup[]> = {
+    JavaScript: ["Front-End"],
+    "HTML5 / CSS3": ["Front-End"],
+    "React Hook Form": ["Data & état"],
+    Figma: ["UI / Design system"],
+    "Adobe XD": ["UI / Design system"],
+    "Node.js": ["Back-End & outils"],
+    "Git / GitHub": ["Back-End & outils"],
+};
+Object.assign(techGroups, cvOnlySkills);
 
-const usageByTech = projects.reduce<Record<string, number>>((acc, project) => {
-    for (const tech of project.stack) {
-        acc[tech] = (acc[tech] ?? 0) + 1;
-    }
-    return acc;
-}, {});
+const groupTitles: TechGroup[] = [
+    "Front-End",
+    "Mobile",
+    "Data & état",
+    "UI / Design system",
+    "Back-End & outils",
+];
+
+const usageByTech = projects.reduce<Record<string, number>>(
+    (acc, project) => {
+        for (const tech of project.stack) {
+            acc[tech] = (acc[tech] ?? 0) + 1;
+        }
+        return acc;
+    },
+    Object.fromEntries(Object.keys(cvOnlySkills).map((tech) => [tech, 0])),
+);
 
 // Techno principale du groupe d'abord, puis la plus utilisée,
 // puis ordre alphabétique à égalité.
 const techSkillsByGroup = groupTitles.map((title) => ({
     title,
     skills: Object.keys(usageByTech)
-        .filter((tech) => (techGroups[tech] ?? ["Back-End"]).includes(title))
+        .filter((tech) => (techGroups[tech] ?? ["Back-End & outils"]).includes(title))
         .sort((a, b) => {
             const primary = (tech: string) => (techGroups[tech]?.[0] === title ? 0 : 1);
             return (
@@ -187,5 +224,5 @@ const techSkillsByGroup = groupTitles.map((title) => ({
 
 export const skillCategories: { title: string; skills: string[] }[] = [
     ...techSkillsByGroup,
-    { title: "Outils & IA", skills: ["Figma", "GitHub", "Cursor", "Claude"] },
+    { title: "Workflow IA", skills: ["Claude Code"] },
 ];
